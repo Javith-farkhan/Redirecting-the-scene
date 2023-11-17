@@ -1,12 +1,88 @@
-# Redirecting-the-scene
+# REDIRECTING-THE-SCENE
 
-## Aim:
+## AIM:
+To redirect a scene using C# program in Unity engine.
 
+## ALGORITHM:
+### Step 1: 
+To open the unity engine.
 
-## Algorithm:
+### Step 2: 
+Create a new plane and create a cube and give color for the cube.
 
-## Program:
+### Step 3: 
+Next create sphere in the orgin and change the z-axis and Give the color for the sphere.
 
-## Output:
+### Step 4: 
+Create a tag for the Sphere and Make the sphere and cube as a Rigidbodies and Make the sphere use Gravity.
 
-## Result:
+### Step 5: 
+Create the C# script file in the Assets and write the Coding for the Redirecting to the scene1 after hit the sphere to cube.
+
+### Step 6: 
+Next Create a another new scene named as scene1.
+
+### Step 7:
+In File->Build settings and drop the both first scene and scene1 scene in the Scenes in build setting.
+
+### Step 8: 
+Click the Build and run button in the Build settings and run the scene.
+
+### Step 9: 
+The Sphere after touching the cube it will disappeared and Press the key [R] the redircting to the new scene that is scene1.
+## PROGRAM:
+```
+Developed by : Javith farkhan S
+Register number : 212221240017
+```
+### CUBE PROGRAM:
+```C#
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using UnityEngine;
+
+public class CubeProgram : MonoBehaviour
+{
+    Rigidbody rb;
+    public GameObject WinText;
+    // Start is called before the first frame update
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("scene1");
+        }
+    }
+    public void OnMouseDown()
+    {
+        Destroy(gameObject);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag=="Cube")
+        {
+            Destroy(collision.gameObject);
+            WinText.SetActive(true);
+        }
+    }
+}
+```
+## OUTPUT:
+### SCENE BEFORE THE BALL HITS THE CUBE:
+![output1](https://github.com/Javith-farkhan/Redirecting-the-scene/assets/94296805/641d7932-88b3-4ae1-93c1-07f249b3c2a0)
+
+### SCENE AFTER THE BALL HITS THE CUBE:
+![output2](https://github.com/Javith-farkhan/Redirecting-the-scene/assets/94296805/9ad53db5-221f-4672-8f22-357778eac836)
+
+### NEW SCENE AFTER REDIRECTING:
+![output3](https://github.com/Javith-farkhan/Redirecting-the-scene/assets/94296805/eec0bd0a-7dea-41b6-bae3-b852fb7ebd34)
+
+## RESULT:
+Thus, a scene is redirected in Unity engine using a C# program.
